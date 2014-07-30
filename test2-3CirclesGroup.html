@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+<script src="../../JQuery/js/jquery.js"></script>
+<script src="../d3.js" charset="utf-8"></script>
+<style>
+
+</style>
+
+</head>
+
+
+<body>
+<svg width="720" height="120">
+
+</svg>
+
+<script>
+var data = [{"x": 40, "y": 60, "r": 15 }, 
+			{"x": 80, "y": 60, "r": 30 },
+			{"x": 120, "y": 60, "r": 45 }];
+
+var svg = d3.select("svg");			
+var grouping = svg.selectAll("g")
+	.data(data)
+	.enter().append("g");
+	
+grouping.append("circle")
+	.attr("r", function(d) { return d.r;})
+	.attr("cx", function(d) { return d.x * 2;})
+	.attr("cy", function(d) { return d.y;})
+	.style ("fill", "steelblue");
+	
+grouping.append("text")
+	.attr("x", function(d) { return d.x * 2 ; })
+	.attr("y", function(d) { return d.y; })
+	.attr("fill", "red")
+	.style ("font",  "10px sans-serif")
+	.text(function(d,i) { return i; });
+
+console.log(grouping);	
+	
+</script>
+</body>
+
+
+</html>
